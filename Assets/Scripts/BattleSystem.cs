@@ -75,7 +75,7 @@ public class BattleSystem : MonoBehaviour
             {
                 Announcements.Announce(EnemyStats.Name + " has been defeated!");
                 Debug.Log("Enemy killed!");
-                Score.score += EnemyStats.Score;
+                Score.IncreaseScore(EnemyStats.Score);
                 ExecuteEnemyTurn = false;
                 StartCoroutine(SpawnNextEnemy());
             }
