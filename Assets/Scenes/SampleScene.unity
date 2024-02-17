@@ -244,6 +244,8 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!1 &173705126
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +880,8 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!225 &453117442
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1916,6 +1920,8 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!1 &818582866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2063,8 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!225 &840813499
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2262,6 +2270,8 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!225 &910524266
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2917,6 +2927,8 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!225 &1193168175
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4294,6 +4306,8 @@ MonoBehaviour:
   Speed: 2
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!225 &1456571921
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4632,6 +4646,8 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
+  ExtraAttackOnLowHealth: 0
+  ReflectedDamagePercent: 0
 --- !u!225 &1624216357
 CanvasGroup:
   m_ObjectHideFlags: 0

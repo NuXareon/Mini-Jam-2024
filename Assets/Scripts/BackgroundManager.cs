@@ -20,12 +20,6 @@ public class BackgroundManager : MonoBehaviour
         CurrentBgIndex %= BackgroundImages.Length;
         foreach (Renderer renderer in BackgoundRenderers)
         {
-            //renderer.material.mainTextureOffset = Vector2.zero;
-            //BackgroundImages[CurrentBgIndex].mainTextureScale = renderer.material.mainTextureScale;
-            //Material[] mats = renderer.materials;
-            //mats[0] = BackgroundImages[CurrentBgIndex];
-            //renderer.materials = mats;
-            //renderer.materials[0] = BackgroundImages[CurrentBgIndex];
             renderer.material = BackgroundImages[CurrentBgIndex];
         }
     }

@@ -27,6 +27,8 @@ public class CombatHandler : MonoBehaviour
 
     private float MaxAttackGauche = 5f;
 
+    private float LowHealthRatio = 0.3f;
+
     public int TempDefense = 0;
     public float TempSpeed = 1f;
 
@@ -38,6 +40,11 @@ public class CombatHandler : MonoBehaviour
     private void Start()
     {
         UpdateUI();
+    }
+
+    public bool IsLowHealth()
+    {
+        return (float)CurrentHealth / (float)MaxHealth <= LowHealthRatio;
     }
 
     public bool Process(float scaledDeltaTime)

@@ -14,4 +14,8 @@ public class ItemStats : MonoBehaviour
     public int Healing = 0;
     // Enemy's speed will be reduced by this amount
     public float EnemySlowPercent = 0f;
+    // Player's attack damange will increase by this amoung when they are low on health
+    public int ExtraAttackOnLowHealth = 0;
+    // Damage received will be reflected to the enemy by this amount
+    public float ReflectedDamagePercent = 0f;
 }

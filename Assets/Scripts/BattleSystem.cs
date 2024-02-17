@@ -29,6 +29,14 @@ public class BattleSystem : MonoBehaviour
         EnemyStats = Enemy.GetComponent<CombatHandler>();
     }
 
+    void OnEnemyKilled()
+    {
+        Announcements.Announce(EnemyStats.Name + " has been defeated!");
+        Debug.Log("Enemy killed!");
+        Score.IncreaseScore(EnemyStats.Score);
+        StartCoroutine(SpawnNextEnemy());
+    }
+
     void Update()
     {
         if (SuspendProcess)
@@ -66,18 +74,23 @@ public class BattleSystem : MonoBehaviour
                 EnemyStats.TempSpeed = Mathf.Max(EnemyStats.TempSpeed, 0.1f);
             }
 
+            int ExtraAttackOnLowHealth = 0;
+            if (PlayerStats.IsLowHealth())
+            {
+                int Slot1ExtraAttackOnLowHealth = Item1 ? Item1.ExtraAttackOnLowHealth : 0;
+                int Slot2ExtraAttackOnLowHealth = Item2 ? Item2.ExtraAttackOnLowHealth : 0;
+                ExtraAttackOnLowHealth = Slot1ExtraAttackOnLowHealth + Slot2ExtraAttackOnLowHealth;
+            }
+
             int Slot1Attack = Item1 ? Item1.Attack : 0;
             int Slot2Attack = Item2 ? Item2.Attack : 0;
-            int AttackDmg = PlayerStats.Attack + Slot1Attack + Slot2Attack;
+            int AttackDmg = PlayerStats.Attack + Slot1Attack + Slot2Attack + ExtraAttackOnLowHealth;
             AttackDmg = Mathf.Max(AttackDmg, 0);
             bool IsEnemyDead = EnemyStats.DoDamage(AttackDmg);
             if (IsEnemyDead)
             {
-                Announcements.Announce(EnemyStats.Name + " has been defeated!");
-                Debug.Log("Enemy killed!");
-                Score.IncreaseScore(EnemyStats.Score);
                 ExecuteEnemyTurn = false;
-                StartCoroutine(SpawnNextEnemy());
+                OnEnemyKilled();
             }
         }
 
@@ -90,14 +103,24 @@ public class BattleSystem : MonoBehaviour
 
             int Slot1Defense = Item1 ? Item1.Defense : 0;
             int Slot2Defense = Item2 ? Item2.Defense : 0;
-            int AttackDmg = EnemyStats.Attack - Slot1Defense - Slot2Defense;
-            bool IsPlayerDead = false;
+            int AttackDmg = EnemyStats.Attack;
 
+            bool IsEnemyDead = false;
             AttackSequence attackSequence = Enemy.GetComponent<AttackSequence>();
             CustomAttackData customAttackData = attackSequence ? attackSequence.GetNextAttack() : null;
             if (customAttackData != null)
             {
                 AttackDmg += customAttackData.Attack;
+
+                float Slot1ReflectDamage = Item1 ? Item1.ReflectedDamagePercent : 0f;
+                float Slot2ReflectDamage = Item2 ? Item2.ReflectedDamagePercent : 0f;
+                float ReflectedDamagePercent = Slot1ReflectDamage + Slot2ReflectDamage;
+                if (ReflectedDamagePercent > 0f)
+                {
+                    int DamageReflected = (int)(AttackDmg * (ReflectedDamagePercent / 100f));
+                    IsEnemyDead = EnemyStats.DoDamage(DamageReflected);
+                }
+
                 EnemyStats.TempDefense = customAttackData.Defense;
                 EnemyStats.TempSpeed = customAttackData.Speed;
                 if (customAttackData.Healing > 0)
@@ -112,18 +135,36 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
+                float Slot1ReflectDamage = Item1 ? Item1.ReflectedDamagePercent : 0f;
+                float Slot2ReflectDamage = Item2 ? Item2.ReflectedDamagePercent : 0f;
+                float ReflectedDamagePercent = Slot1ReflectDamage + Slot2ReflectDamage;
+                if (ReflectedDamagePercent > 0f)
+                {
+                    int DamageReflected = (int)((float)AttackDmg * (ReflectedDamagePercent / 100f));
+                    IsEnemyDead = EnemyStats.DoDamage(DamageReflected);
+                }
+
                 Announcements.Announce(EnemyStats.Name + " is attacking");
             }
 
+            AttackDmg = AttackDmg - Slot1Defense - Slot2Defense;
             AttackDmg = Mathf.Max(AttackDmg, 0);
-            IsPlayerDead = PlayerStats.DoDamage(AttackDmg);
 
+            bool IsPlayerDead = PlayerStats.DoDamage(AttackDmg);
             if (IsPlayerDead)
             {
+                if (IsEnemyDead)
+                {
+                    Debug.Log("Enemy killed!");
+                    Score.IncreaseScore(EnemyStats.Score);
+                }
                 Announcements.Announce("Player is dead. Game Over.");
                 Debug.Log("Player is dead!");
             }
-
+            else if (IsEnemyDead)
+            {
+                OnEnemyKilled();
+            }
         }
     }
 

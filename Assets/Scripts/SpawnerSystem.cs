@@ -12,12 +12,6 @@ public class SpawnerSystem : MonoBehaviour
     private bool isFirstEnemy = true;
     private int lastSpawnedIdx = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public GameObject SpawnEnemy()
     {
         int index;
