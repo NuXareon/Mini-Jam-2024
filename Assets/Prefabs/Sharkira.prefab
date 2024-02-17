@@ -222,6 +222,6 @@ MonoBehaviour:
   - Attack: 0
     Defense: 0
     Speed: 1
-    Healing: 50
+    Healing: 10
     AttackText: crushes you with all her love
     Sprite: {fileID: 0}

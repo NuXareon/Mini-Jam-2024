@@ -875,10 +875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 10
+  Attack: 0
   Defense: 0
   Speed: 1
-  Healing: 0
+  Healing: 10
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
   ReflectedDamagePercent: 0
@@ -2058,13 +2058,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 10
+  Attack: 0
   Defense: 0
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
-  ReflectedDamagePercent: 0
+  ReflectedDamagePercent: 30
 --- !u!225 &840813499
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2265,12 +2265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 15
+  Attack: 2
   Defense: 0
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
-  ExtraAttackOnLowHealth: 0
+  ExtraAttackOnLowHealth: 13
   ReflectedDamagePercent: 0
 --- !u!225 &910524266
 CanvasGroup:
@@ -4645,7 +4645,7 @@ MonoBehaviour:
   Defense: 0
   Speed: 1
   Healing: 0
-  EnemySlowPercent: 0
+  EnemySlowPercent: 50
   ExtraAttackOnLowHealth: 0
   ReflectedDamagePercent: 0
 --- !u!225 &1624216357

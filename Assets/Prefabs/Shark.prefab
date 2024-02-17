@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 80
-  Attack: 5
+  Attack: 3
   Defense: 0
   Speed: 2
   Score: 50
@@ -138,7 +138,7 @@ MonoBehaviour:
   - Attack: 0
     Defense: 0
     Speed: 1
-    Healing: 25
+    Healing: 15
     AttackText: nourishes himself with your blood
     Sprite: {fileID: 0}
 --- !u!1 &7476789041193458013
