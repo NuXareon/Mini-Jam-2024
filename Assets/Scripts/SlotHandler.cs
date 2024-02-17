@@ -8,6 +8,15 @@ public class SlotHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     public GameObject itemHeld = null;
     private bool shouldResetItemHeld = false;
 
+    public ItemStats GetItemStats()
+    {
+        if (itemHeld)
+        {
+            return itemHeld.GetComponent<ItemStats>();
+        }
+        return null;
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (itemHeld != null)
