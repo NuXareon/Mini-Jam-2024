@@ -49,9 +49,13 @@ public class BattleSystem : MonoBehaviour
         if (ExecuteEnemyTurn)
         {
             Debug.Log("Enemy Attacking!");
-
             // TODO enemy will have an attack sequence, some sort of array of actions, we will need to consider that when attacking
-            bool IsPlayerDead = PlayerStats.DoDamage(EnemyStats.Attack);
+
+            int Slot1Defense = Item1 ? Item1.Defense : 0;
+            int Slot2Defense = Item2 ? Item2.Defense : 0;
+            int AttackDmg = EnemyStats.Attack - Slot1Defense - Slot2Defense;
+            AttackDmg = Mathf.Max(AttackDmg, 0);
+            bool IsPlayerDead = PlayerStats.DoDamage(AttackDmg);
             if (IsPlayerDead)
             {
                 Debug.Log("Player is dead!");
