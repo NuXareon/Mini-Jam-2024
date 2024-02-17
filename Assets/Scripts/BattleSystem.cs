@@ -53,19 +53,42 @@ public class BattleSystem : MonoBehaviour
         if (ExecuteEnemyTurn)
         {
             Debug.Log("Enemy Attacking!");
-            // TODO enemy will have an attack sequence, some sort of array of actions, we will need to consider that when attacking
 
-            Announcements.Announce(EnemyStats.Name + " is attacking");
+            EnemyStats.TempDefense = 0;
+            EnemyStats.TempSpeed = 1f;
+
             int Slot1Defense = Item1 ? Item1.Defense : 0;
             int Slot2Defense = Item2 ? Item2.Defense : 0;
             int AttackDmg = EnemyStats.Attack - Slot1Defense - Slot2Defense;
+            bool IsPlayerDead = false;
+
+            AttackSequence attackSequence = Enemy.GetComponent<AttackSequence>();
+            CustomAttackData customAttackData = attackSequence ? attackSequence.GetNextAttack() : null;
+            if (customAttackData != null)
+            {
+                AttackDmg += customAttackData.Attack;
+                EnemyStats.TempDefense = customAttackData.Defense;
+                EnemyStats.TempSpeed = customAttackData.Speed;
+                if (customAttackData.Healing > 0)
+                {
+                    EnemyStats.Heal(customAttackData.Healing);
+                }
+                Announcements.Announce(EnemyStats.Name + " " + customAttackData.AttackText);
+            }
+            else
+            {
+                Announcements.Announce(EnemyStats.Name + " is attacking");
+            }
+
             AttackDmg = Mathf.Max(AttackDmg, 0);
-            bool IsPlayerDead = PlayerStats.DoDamage(AttackDmg);
+            IsPlayerDead = PlayerStats.DoDamage(AttackDmg);
+
             if (IsPlayerDead)
             {
                 Announcements.Announce("Player is dead. Game Over.");
                 Debug.Log("Player is dead!");
             }
+
         }
     }
 }

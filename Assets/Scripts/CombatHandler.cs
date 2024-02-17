@@ -25,6 +25,9 @@ public class CombatHandler : MonoBehaviour
 
     private float MaxAttackGauche = 5f;
 
+    public int TempDefense = 0;
+    public float TempSpeed = 1f;
+
     void Start()
     {
         CurrentHealth = MaxHealth;
@@ -33,7 +36,7 @@ public class CombatHandler : MonoBehaviour
 
     public bool Process(float scaledDeltaTime)
     {
-        AttackGauche += scaledDeltaTime*Speed;
+        AttackGauche += scaledDeltaTime*Speed*TempSpeed;
         if (AttackGauche >= MaxAttackGauche) 
         {
             AttackGauche = 0f;
@@ -46,7 +49,7 @@ public class CombatHandler : MonoBehaviour
 
     public bool DoDamage(int damage)
     {
-        int damageMitigated = damage - Defense;
+        int damageMitigated = damage - Defense - TempDefense;
         damageMitigated = Mathf.Max(damageMitigated, 0);
         CurrentHealth -= damageMitigated;
         CurrentHealth = Mathf.Max(CurrentHealth, 0);
@@ -56,4 +59,15 @@ public class CombatHandler : MonoBehaviour
         Debug.Log("Attack did " + damageMitigated + " damage, health remaining: " + CurrentHealth);
         return CurrentHealth <= 0;
     }
+
+    public void Heal(int health)
+    {
+        CurrentHealth += health;
+        CurrentHealth = Mathf.Min(CurrentHealth, MaxHealth);
+        float HealthRatio = (float)CurrentHealth / (float)MaxHealth;
+        HealthBar.SetSize(HealthRatio);
+        HealthBar.SetText(CurrentHealth + "/" + MaxHealth);
+        Debug.Log("Healed for " + health + " health, health remaining: " + CurrentHealth);
+    }
+
 }
