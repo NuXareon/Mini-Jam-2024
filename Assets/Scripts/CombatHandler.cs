@@ -13,6 +13,10 @@ public class CombatHandler : MonoBehaviour
     // How fast the attack gauch feels. Higher speed will make the entity act more often.
     public float Speed = 1;
 
+    // TODO we will need to hook this up dynamically when spawning enemies
+    public HealthBarHandler HealthBar = null;
+    public HealthBarHandler GaucheBar = null;
+
     public string Name;
     public string Intro;
 
@@ -35,6 +39,8 @@ public class CombatHandler : MonoBehaviour
             AttackGauche = 0f;
             return true;
         }
+
+        GaucheBar.SetSize(AttackGauche / MaxAttackGauche);
         return false;
     }
 
@@ -44,6 +50,8 @@ public class CombatHandler : MonoBehaviour
         damageMitigated = Mathf.Max(damageMitigated, 0);
         CurrentHealth -= damageMitigated;
         CurrentHealth = Mathf.Max(CurrentHealth, 0);
+        float HealthRatio = (float)CurrentHealth / (float)MaxHealth;
+        HealthBar.SetSize(HealthRatio);
         Debug.Log("Attack did " + damageMitigated + " damage, health remaining: " + CurrentHealth);
         return CurrentHealth <= 0;
     }
