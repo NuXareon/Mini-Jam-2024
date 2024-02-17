@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using TreeEditor;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class HealthBarHandler : MonoBehaviour
 {
     // Speed of smoothing, 1.0 = ~1 second. Bigger means faster. 0.0 = No smoothing.
     public float SmoothingSpeed = 10.0f;
+    public TextMeshProUGUI Text;
 
     private Transform Bar;
     private float targetSize = 1f;
@@ -34,6 +36,14 @@ public class HealthBarHandler : MonoBehaviour
         else
         {
             Bar.localScale = new Vector3(size, 1f);
+        }
+    }
+
+    public void SetText(string text)
+    {
+        if (Text != null)
+        {
+            Text.text = text;
         }
     }
 }

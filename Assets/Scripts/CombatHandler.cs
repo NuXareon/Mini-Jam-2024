@@ -28,6 +28,7 @@ public class CombatHandler : MonoBehaviour
     void Start()
     {
         CurrentHealth = MaxHealth;
+        HealthBar.SetText(CurrentHealth+"/"+MaxHealth);
     }
 
     public bool Process(float scaledDeltaTime)
@@ -51,6 +52,7 @@ public class CombatHandler : MonoBehaviour
         CurrentHealth = Mathf.Max(CurrentHealth, 0);
         float HealthRatio = (float)CurrentHealth / (float)MaxHealth;
         HealthBar.SetSize(HealthRatio);
+        HealthBar.SetText(CurrentHealth+"/"+MaxHealth);
         Debug.Log("Attack did " + damageMitigated + " damage, health remaining: " + CurrentHealth);
         return CurrentHealth <= 0;
     }
