@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173047defd2a57f4cbe9a031782c7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 80
   Attack: 5
   Defense: 0
-  Speed: 0.4
-  Score: 1
+  Speed: 2
+  Score: 50
   HealthBar: {fileID: 0}
   GaucheBar: {fileID: 0}
   Name: Shark (?)
@@ -138,8 +138,8 @@ MonoBehaviour:
   - Attack: 0
     Defense: 0
     Speed: 1
-    Healing: 30
-    AttackText: nourishes himself by your blood
+    Healing: 25
+    AttackText: nourishes himself with your blood
     Sprite: {fileID: 0}
 --- !u!1 &7476789041193458013
 GameObject:

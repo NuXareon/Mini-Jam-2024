@@ -82,7 +82,7 @@ Material:
     - _OcclusionStrength: 1
     - _Opacity: 0
     - _Parallax: 0.02
-    - _Scale: 6.62
+    - _Scale: 5.76
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 0.53

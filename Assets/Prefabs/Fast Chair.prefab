@@ -99,11 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173047defd2a57f4cbe9a031782c7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 40
   Attack: 3
-  Defense: 3
-  Speed: 2
-  Score: 1
+  Defense: 0
+  Speed: 3
+  Score: 10
   HealthBar: {fileID: 0}
   GaucheBar: {fileID: 0}
   Name: Fast Chair

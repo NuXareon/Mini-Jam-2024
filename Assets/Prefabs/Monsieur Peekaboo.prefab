@@ -183,11 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173047defd2a57f4cbe9a031782c7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 150
   Attack: 0
   Defense: 10
   Speed: 0.8
-  Score: 1
+  Score: 100
   HealthBar: {fileID: 0}
   GaucheBar: {fileID: 0}
   Name: Monsieur Peekaboo
@@ -213,7 +213,7 @@ MonoBehaviour:
     Healing: 0
     AttackText: sees you
     Sprite: {fileID: 21300000, guid: 6f8c7ffc3692f7d41aa970866df65b2f, type: 3}
-  - Attack: 20
+  - Attack: 25
     Defense: 0
     Speed: 1
     Healing: 0

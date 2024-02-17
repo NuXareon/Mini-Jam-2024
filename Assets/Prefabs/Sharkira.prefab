@@ -183,11 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173047defd2a57f4cbe9a031782c7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
-  Attack: 5
+  MaxHealth: 125
+  Attack: 3
   Defense: 0
-  Speed: 0.4
-  Score: 1
+  Speed: 3
+  Score: 75
   HealthBar: {fileID: 0}
   GaucheBar: {fileID: 0}
   Name: Sharkira
@@ -219,9 +219,9 @@ MonoBehaviour:
     Healing: 0
     AttackText: kisses you
     Sprite: {fileID: 0}
-  - Attack: 15
+  - Attack: 0
     Defense: 0
     Speed: 1
-    Healing: 30
+    Healing: 50
     AttackText: crushes you with all her love
     Sprite: {fileID: 0}

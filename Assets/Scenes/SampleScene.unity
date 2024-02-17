@@ -1279,11 +1279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173047defd2a57f4cbe9a031782c7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
-  Attack: 10
-  Defense: 1
+  MaxHealth: 50
+  Attack: 5
+  Defense: 0
   Speed: 1
-  Score: 1
+  Score: 0
   HealthBar: {fileID: 773215733}
   GaucheBar: {fileID: 1249002661}
   Name: 
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 10
+  Attack: 5
   Defense: 0
   Speed: 1
   Healing: 0
@@ -2265,7 +2265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 10
+  Attack: 15
   Defense: 0
   Speed: 1
   Healing: 0
@@ -2922,9 +2922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 10
-  Defense: 0
-  Speed: 1
+  Attack: 0
+  Defense: 15
+  Speed: 0.2
   Healing: 0
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
@@ -4641,7 +4641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 10
+  Attack: 0
   Defense: 0
   Speed: 1
   Healing: 0

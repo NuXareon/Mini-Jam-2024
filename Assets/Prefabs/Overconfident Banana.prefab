@@ -183,11 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173047defd2a57f4cbe9a031782c7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
-  Attack: 3
+  MaxHealth: 25
+  Attack: 5
   Defense: 0
   Speed: 0.8
-  Score: 1
+  Score: 5
   HealthBar: {fileID: 0}
   GaucheBar: {fileID: 0}
   Name: Overconfident Banana
