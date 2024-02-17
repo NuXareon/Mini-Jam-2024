@@ -8,17 +8,20 @@ public class BattleSystem : MonoBehaviour
     public GameObject Player;
     private CombatHandler PlayerStats;
     // TODO this needs to come from the spawner system
-    public GameObject Enemy;
+    private GameObject Enemy;
     private CombatHandler EnemyStats;
 
     public SlotHandler Slot1;
     public SlotHandler Slot2;
 
     public AnnouncementsHandler Announcements;
+    public SpawnerSystem Spawner;
 
     void Start()
     {
         PlayerStats = Player.GetComponent<CombatHandler>();
+
+        Enemy = Spawner.SpawnEnemy();
         EnemyStats = Enemy.GetComponent<CombatHandler>();
     }
 
