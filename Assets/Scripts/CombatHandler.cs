@@ -28,10 +28,14 @@ public class CombatHandler : MonoBehaviour
     public int TempDefense = 0;
     public float TempSpeed = 1f;
 
-    void Start()
+    void Awake()
     {
         CurrentHealth = MaxHealth;
-        HealthBar.SetText(CurrentHealth+"/"+MaxHealth);
+    }
+
+    private void Start()
+    {
+        UpdateUI();
     }
 
     public bool Process(float scaledDeltaTime)
@@ -70,4 +74,11 @@ public class CombatHandler : MonoBehaviour
         Debug.Log("Healed for " + health + " health, health remaining: " + CurrentHealth);
     }
 
+    public void UpdateUI()
+    {
+        float HealthRatio = (float)CurrentHealth / (float)MaxHealth;
+        HealthBar.SetSize(HealthRatio);
+        HealthBar.SetText(CurrentHealth + "/" + MaxHealth);
+        GaucheBar.SetSize(AttackGauche / MaxAttackGauche);
+    }
 }

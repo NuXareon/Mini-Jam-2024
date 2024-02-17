@@ -17,6 +17,8 @@ public class BattleSystem : MonoBehaviour
     public AnnouncementsHandler Announcements;
     public SpawnerSystem Spawner;
 
+    private bool SuspendProcess = false;
+
     void Start()
     {
         PlayerStats = Player.GetComponent<CombatHandler>();
@@ -27,6 +29,11 @@ public class BattleSystem : MonoBehaviour
 
     void Update()
     {
+        if (SuspendProcess)
+        {
+            return;
+        }
+
         ItemStats Item1 = Slot1.GetItemStats();
         ItemStats Item2 = Slot2.GetItemStats();
         float Slot1Speed = Item1 ? Item1.Speed : 1f;
@@ -50,6 +57,7 @@ public class BattleSystem : MonoBehaviour
                 Announcements.Announce(EnemyStats.Name + " has been defeated!");
                 Debug.Log("Enemy killed!");
                 ExecuteEnemyTurn = false;
+                StartCoroutine(SpawnNextEnemy());
             }
         }
 
@@ -97,5 +105,19 @@ public class BattleSystem : MonoBehaviour
             }
 
         }
+    }
+
+    IEnumerator SpawnNextEnemy()
+    {
+        SuspendProcess = true;
+        yield return new WaitForSeconds(1.5f);
+
+        Destroy(Enemy);
+
+        Enemy = Spawner.SpawnEnemy();
+        EnemyStats = Enemy.GetComponent<CombatHandler>();
+        Announcements.Announce(EnemyStats.Name + " " + EnemyStats.Intro);
+
+        SuspendProcess = false;
     }
 }
