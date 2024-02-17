@@ -10,7 +10,7 @@ public class HealthBarHandler : MonoBehaviour
 
     private Transform Bar;
     private float targetSize = 1f;
-    // Start is called before the first frame update
+
     void Start()
     {
         Bar = transform.Find("Bar");

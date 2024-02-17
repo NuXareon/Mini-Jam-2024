@@ -14,6 +14,8 @@ public class BattleSystem : MonoBehaviour
     public SlotHandler Slot1;
     public SlotHandler Slot2;
 
+    public AnnouncementsHandler Announcements;
+
     void Start()
     {
         PlayerStats = Player.GetComponent<CombatHandler>();
@@ -33,6 +35,7 @@ public class BattleSystem : MonoBehaviour
         if (ExecutePlayerTurn)
         {
             Debug.Log("Player Attacking!");
+            Announcements.Announce("Player is attacking");
 
             int Slot1Attack = Item1 ? Item1.Attack : 0;
             int Slot2Attack = Item2 ? Item2.Attack : 0;
@@ -41,6 +44,7 @@ public class BattleSystem : MonoBehaviour
             bool IsEnemyDead = EnemyStats.DoDamage(AttackDmg);
             if (IsEnemyDead)
             {
+                Announcements.Announce(EnemyStats.Name + " has been defeated!");
                 Debug.Log("Enemy killed!");
                 ExecuteEnemyTurn = false;
             }
@@ -51,6 +55,7 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("Enemy Attacking!");
             // TODO enemy will have an attack sequence, some sort of array of actions, we will need to consider that when attacking
 
+            Announcements.Announce(EnemyStats.Name + " is attacking");
             int Slot1Defense = Item1 ? Item1.Defense : 0;
             int Slot2Defense = Item2 ? Item2.Defense : 0;
             int AttackDmg = EnemyStats.Attack - Slot1Defense - Slot2Defense;
@@ -58,6 +63,7 @@ public class BattleSystem : MonoBehaviour
             bool IsPlayerDead = PlayerStats.DoDamage(AttackDmg);
             if (IsPlayerDead)
             {
+                Announcements.Announce("Player is dead. Game Over.");
                 Debug.Log("Player is dead!");
             }
         }

@@ -33,7 +33,6 @@ public class CombatHandler : MonoBehaviour
     public bool Process(float scaledDeltaTime)
     {
         AttackGauche += scaledDeltaTime*Speed;
-        //Debug.Log(name + ": Increased Attack Gauche by " + scaledDeltaTime * Speed + ". Attack Gauche: " + AttackGauche);
         if (AttackGauche >= MaxAttackGauche) 
         {
             AttackGauche = 0f;
