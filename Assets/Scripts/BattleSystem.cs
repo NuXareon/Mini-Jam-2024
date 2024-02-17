@@ -73,6 +73,10 @@ public class BattleSystem : MonoBehaviour
                 {
                     EnemyStats.Heal(customAttackData.Healing);
                 }
+                if (customAttackData.Sprite != null)
+                {
+                    Enemy.GetComponent<SpriteRenderer>().sprite = customAttackData.Sprite;
+                }
                 Announcements.Announce(EnemyStats.Name + " " + customAttackData.AttackText);
             }
             else

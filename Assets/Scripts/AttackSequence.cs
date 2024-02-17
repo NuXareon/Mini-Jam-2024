@@ -10,6 +10,7 @@ public class CustomAttackData
     public float Speed = 1f;
     public int Healing = 0;
     public string AttackText;
+    public Sprite Sprite;
 }
 
 public class AttackSequence : MonoBehaviour
@@ -32,17 +33,5 @@ public class AttackSequence : MonoBehaviour
             CurrentAttackIndex = 0;
         }
         return Result;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
