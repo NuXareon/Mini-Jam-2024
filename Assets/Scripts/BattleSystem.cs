@@ -49,6 +49,23 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("Player Attacking!");
             Announcements.Announce("Player is attacking");
 
+            int Slot1Healing = Item1 ? Item1.Healing : 0;
+            int Slot2Healing = Item2 ? Item2.Healing : 0;
+            int Healing = Slot1Healing + Slot2Healing;
+            if (Healing > 0)
+            {
+                PlayerStats.Heal(Healing);
+            }
+
+            float Slot1Slow = Item1 ? Item1.EnemySlowPercent : 0f;
+            float Slot2Slow = Item2 ? Item2.EnemySlowPercent : 0f;
+            float Slow = Slot1Slow + Slot2Slow;
+            if (Slow > 0f)
+            {
+                EnemyStats.TempSpeed -= Slow/100f;
+                EnemyStats.TempSpeed = Mathf.Max(EnemyStats.TempSpeed, 0.1f);
+            }
+
             int Slot1Attack = Item1 ? Item1.Attack : 0;
             int Slot2Attack = Item2 ? Item2.Attack : 0;
             int AttackDmg = PlayerStats.Attack + Slot1Attack + Slot2Attack;

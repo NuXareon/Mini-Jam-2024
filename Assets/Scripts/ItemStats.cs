@@ -10,4 +10,8 @@ public class ItemStats : MonoBehaviour
     public int Defense = 0;
     // Player's attack gauche fill rate will be scaled by this amount
     public float Speed = 1;
+    // Player's health will increase by this amount
+    public int Healing = 0;
+    // Enemy's speed will be reduced by this amount
+    public float EnemySlowPercent = 0f;
 }
