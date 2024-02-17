@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CombatHandler : MonoBehaviour
 {
-    //  Total health, once it reaches 0 the entity dies
+    //  Total health, once it reaches 0 the entity dies.
     public int MaxHealth = 100;
-    // How much damage we do per attack
+    // How much damage we do per attack.
     public int Attack = 10;
     // Damage reduction. Will be substracted directly from the enemy attack.
     public int Defense = 1;
     // How fast the attack gauch feels. Higher speed will make the entity act more often.
     public float Speed = 1;
+    // How much score does this enemy give when defeated.
+    public int Score = 1;
 
     // TODO we will need to hook this up dynamically when spawning enemies
     public HealthBarHandler HealthBar = null;

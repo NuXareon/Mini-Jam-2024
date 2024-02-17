@@ -39,7 +39,6 @@ public class SpawnerSystem : MonoBehaviour
         CombatHandler enemyCombatHandler = newEnemy.GetComponent<CombatHandler>();
         enemyCombatHandler.HealthBar = EnemyHealthBar;
         enemyCombatHandler.GaucheBar = EnemyGauge;
-        //enemyCombatHandler.UpdateUI();
 
         return newEnemy;
     }

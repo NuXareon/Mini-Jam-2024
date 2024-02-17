@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class BattleSystem : MonoBehaviour
 {
     public GameObject Player;
     private CombatHandler PlayerStats;
-    // TODO this needs to come from the spawner system
+
     private GameObject Enemy;
     private CombatHandler EnemyStats;
 
@@ -16,6 +17,7 @@ public class BattleSystem : MonoBehaviour
 
     public AnnouncementsHandler Announcements;
     public SpawnerSystem Spawner;
+    public ScoreSystem Score;
 
     private bool SuspendProcess = false;
 
@@ -56,6 +58,7 @@ public class BattleSystem : MonoBehaviour
             {
                 Announcements.Announce(EnemyStats.Name + " has been defeated!");
                 Debug.Log("Enemy killed!");
+                Score.score += EnemyStats.Score;
                 ExecuteEnemyTurn = false;
                 StartCoroutine(SpawnNextEnemy());
             }
