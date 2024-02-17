@@ -13,7 +13,7 @@ public class HealthBarHandler : MonoBehaviour
     private Transform Bar;
     private float targetSize = 1f;
 
-    void Start()
+    void Awake()
     {
         Bar = transform.Find("Bar");
     }

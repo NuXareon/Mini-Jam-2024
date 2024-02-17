@@ -24,6 +24,7 @@ public class SpawnerSystem : MonoBehaviour
         if (isFirstEnemy)
         {
             index = 0;
+            isFirstEnemy = false;
         }
         else
         {
@@ -39,6 +40,7 @@ public class SpawnerSystem : MonoBehaviour
         CombatHandler enemyCombatHandler = newEnemy.GetComponent<CombatHandler>();
         enemyCombatHandler.HealthBar = EnemyHealthBar;
         enemyCombatHandler.GaucheBar = EnemyGauge;
+        lastSpawnedIdx = index;
 
         return newEnemy;
     }
