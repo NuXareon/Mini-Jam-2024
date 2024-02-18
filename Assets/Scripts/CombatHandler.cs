@@ -30,7 +30,8 @@ public class CombatHandler : MonoBehaviour
     private float LowHealthRatio = 0.3f;
 
     public int TempDefense = 0;
-    public float TempSpeed = 1f;
+    public float TempSpeedSelf = 1f;
+    public float TempSpeedEnemy = 1f;
 
     void Awake()
     {
@@ -49,7 +50,7 @@ public class CombatHandler : MonoBehaviour
 
     public bool Process(float scaledDeltaTime)
     {
-        AttackGauche += scaledDeltaTime*Speed*TempSpeed;
+        AttackGauche += scaledDeltaTime*Speed*TempSpeedSelf*TempSpeedEnemy;
         if (AttackGauche >= MaxAttackGauche) 
         {
             AttackGauche = 0f;
@@ -76,7 +77,7 @@ public class CombatHandler : MonoBehaviour
     public void Heal(int health)
     {
         CurrentHealth += health;
-        CurrentHealth = Mathf.Min(CurrentHealth, MaxHealth);
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         float HealthRatio = (float)CurrentHealth / (float)MaxHealth;
         HealthBar.SetSize(HealthRatio);
         HealthBar.SetText(CurrentHealth + "/" + MaxHealth);

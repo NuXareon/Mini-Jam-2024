@@ -60,7 +60,7 @@ public class BattleSystem : MonoBehaviour
             int Slot1Healing = Item1 ? Item1.Healing : 0;
             int Slot2Healing = Item2 ? Item2.Healing : 0;
             int Healing = Slot1Healing + Slot2Healing;
-            if (Healing > 0)
+            if (Healing != 0)
             {
                 PlayerStats.Heal(Healing);
             }
@@ -70,8 +70,7 @@ public class BattleSystem : MonoBehaviour
             float Slow = Slot1Slow + Slot2Slow;
             if (Slow > 0f)
             {
-                EnemyStats.TempSpeed -= Slow/100f;
-                EnemyStats.TempSpeed = Mathf.Max(EnemyStats.TempSpeed, 0.1f);
+                EnemyStats.TempSpeedEnemy = Slow/100f;
             }
 
             int ExtraAttackOnLowHealth = 0;
@@ -98,9 +97,6 @@ public class BattleSystem : MonoBehaviour
         {
             Debug.Log("Enemy Attacking!");
 
-            EnemyStats.TempDefense = 0;
-            EnemyStats.TempSpeed = 1f;
-
             int Slot1Defense = Item1 ? Item1.Defense : 0;
             int Slot2Defense = Item2 ? Item2.Defense : 0;
             int AttackDmg = EnemyStats.Attack;
@@ -110,19 +106,25 @@ public class BattleSystem : MonoBehaviour
             CustomAttackData customAttackData = attackSequence ? attackSequence.GetNextAttack() : null;
             if (customAttackData != null)
             {
+                Debug.Log("Custom attack");
                 AttackDmg += customAttackData.Attack;
+                Debug.Log(AttackDmg);
 
                 float Slot1ReflectDamage = Item1 ? Item1.ReflectedDamagePercent : 0f;
                 float Slot2ReflectDamage = Item2 ? Item2.ReflectedDamagePercent : 0f;
                 float ReflectedDamagePercent = Slot1ReflectDamage + Slot2ReflectDamage;
+                Debug.Log(ReflectedDamagePercent);
+
                 if (ReflectedDamagePercent > 0f)
                 {
                     int DamageReflected = (int)(AttackDmg * (ReflectedDamagePercent / 100f));
+                    Debug.Log(DamageReflected);
+                    Debug.Log(EnemyStats.TempDefense);
                     IsEnemyDead = EnemyStats.DoDamage(DamageReflected);
                 }
 
                 EnemyStats.TempDefense = customAttackData.Defense;
-                EnemyStats.TempSpeed = customAttackData.Speed;
+                EnemyStats.TempSpeedSelf = customAttackData.Speed;
                 if (customAttackData.Healing > 0)
                 {
                     EnemyStats.Heal(customAttackData.Healing);
@@ -144,8 +146,13 @@ public class BattleSystem : MonoBehaviour
                     IsEnemyDead = EnemyStats.DoDamage(DamageReflected);
                 }
 
+                EnemyStats.TempDefense = 0;
+                EnemyStats.TempSpeedSelf = 1f;
+
                 Announcements.Announce(EnemyStats.Name + " is attacking");
             }
+
+            EnemyStats.TempSpeedEnemy = 1f;
 
             AttackDmg = AttackDmg - Slot1Defense - Slot2Defense;
             AttackDmg = Mathf.Max(AttackDmg, 0);
