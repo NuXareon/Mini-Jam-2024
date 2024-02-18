@@ -240,9 +240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attack: 0
-  Defense: 5
-  Speed: 1
-  Healing: 0
+  Defense: 0
+  Speed: 2.5
+  Healing: -5
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
   ReflectedDamagePercent: 0
@@ -877,8 +877,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: 0
   Defense: 0
-  Speed: 1
-  Healing: 10
+  Speed: 0.7
+  Healing: 5
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
   ReflectedDamagePercent: 0
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   MaxHealth: 50
   Attack: 5
   Defense: 0
-  Speed: 1
+  Speed: 1.5
   Score: 0
   HealthBar: {fileID: 773215733}
   GaucheBar: {fileID: 1249002661}
@@ -1915,7 +1915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 5
+  Attack: 10
   Defense: 0
   Speed: 1
   Healing: 0
@@ -2059,12 +2059,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attack: 0
-  Defense: 0
+  Defense: 1
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
-  ReflectedDamagePercent: 30
+  ReflectedDamagePercent: 40
 --- !u!225 &840813499
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2270,7 +2270,7 @@ MonoBehaviour:
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
-  ExtraAttackOnLowHealth: 13
+  ExtraAttackOnLowHealth: 18
   ReflectedDamagePercent: 0
 --- !u!225 &910524266
 CanvasGroup:
@@ -2922,9 +2922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 0
-  Defense: 15
-  Speed: 0.2
+  Attack: -5
+  Defense: 10
+  Speed: 1
   Healing: 0
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
@@ -4301,7 +4301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 0
+  Attack: -5
   Defense: 0
   Speed: 2
   Healing: 0
@@ -4641,7 +4641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 0
+  Attack: 1
   Defense: 0
   Speed: 1
   Healing: 0
