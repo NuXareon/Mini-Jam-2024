@@ -13,6 +13,7 @@ public class BattleSystem : MonoBehaviour
 
     private GameObject Enemy;
     private CombatHandler EnemyStats;
+    private AudioSource EnemyAudio;
 
     public SlotHandler Slot1;
     public SlotHandler Slot2;
@@ -24,6 +25,8 @@ public class BattleSystem : MonoBehaviour
     public TextMeshProUGUI EnemyName;
 
     public GameObject HealthPopupPrefab;
+
+    public AudioClip DefaultAttackAudio;
 
     private bool SuspendProcess = false;
 
@@ -167,6 +170,8 @@ public class BattleSystem : MonoBehaviour
 
             EnemyStats.TempSpeedEnemy = 1f;
 
+            EnemyAudio.PlayOneShot(DefaultAttackAudio);
+
             AttackDmg = AttackDmg - Slot1Defense - Slot2Defense;
             AttackDmg = Mathf.Max(AttackDmg, 0);
 
@@ -205,6 +210,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         Enemy = Spawner.SpawnEnemy();
+        EnemyAudio = Enemy.GetComponent<AudioSource>();
         EnemyStats = Enemy.GetComponent<CombatHandler>();
         Announcements.Announce(EnemyStats.Name + " " + EnemyStats.Intro);
         EnemyName.text = EnemyStats.Name;

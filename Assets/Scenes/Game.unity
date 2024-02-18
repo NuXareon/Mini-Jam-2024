@@ -5612,6 +5612,7 @@ MonoBehaviour:
   Score: {fileID: 1768014843}
   EnemyName: {fileID: 477132296}
   HealthPopupPrefab: {fileID: 4919891711721122157, guid: 0026ff8350938d04f8ef70a4a3c4d52c, type: 3}
+  DefaultAttackAudio: {fileID: 8300000, guid: 73b933888b7a56b48ac4d2619045ea6f, type: 3}
 --- !u!4 &1768014841
 Transform:
   m_ObjectHideFlags: 0
