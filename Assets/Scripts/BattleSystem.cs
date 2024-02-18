@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class BattleSystem : MonoBehaviour
@@ -25,8 +26,7 @@ public class BattleSystem : MonoBehaviour
     {
         PlayerStats = Player.GetComponent<CombatHandler>();
 
-        Enemy = Spawner.SpawnEnemy();
-        EnemyStats = Enemy.GetComponent<CombatHandler>();
+        StartCoroutine(SpawnNextEnemy(true));
     }
 
     void OnEnemyKilled()
@@ -34,7 +34,7 @@ public class BattleSystem : MonoBehaviour
         Announcements.Announce(EnemyStats.Name + " has been defeated!");
         Debug.Log("Enemy killed!");
         Score.IncreaseScore(EnemyStats.Score);
-        StartCoroutine(SpawnNextEnemy());
+        StartCoroutine(SpawnNextEnemy(false));
     }
 
     void Update()
@@ -57,12 +57,14 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("Player Attacking!");
             Announcements.Announce("Player is attacking");
 
+            bool IsPlayerDead = false;
+
             int Slot1Healing = Item1 ? Item1.Healing : 0;
             int Slot2Healing = Item2 ? Item2.Healing : 0;
             int Healing = Slot1Healing + Slot2Healing;
             if (Healing != 0)
             {
-                PlayerStats.Heal(Healing);
+                IsPlayerDead = PlayerStats.Heal(Healing);
             }
 
             float Slot1Slow = Item1 ? Item1.EnemySlowPercent : 0f;
@@ -86,7 +88,17 @@ public class BattleSystem : MonoBehaviour
             int AttackDmg = PlayerStats.Attack + Slot1Attack + Slot2Attack + ExtraAttackOnLowHealth;
             AttackDmg = Mathf.Max(AttackDmg, 0);
             bool IsEnemyDead = EnemyStats.DoDamage(AttackDmg);
-            if (IsEnemyDead)
+            if (IsPlayerDead)
+            {
+                ExecuteEnemyTurn = false;
+                if (IsEnemyDead)
+                {
+                    Debug.Log("Enemy killed!");
+                    Score.IncreaseScore(EnemyStats.Score);
+                }
+                StartCoroutine(OnPlayerDeath());
+            }
+            else if (IsEnemyDead)
             {
                 ExecuteEnemyTurn = false;
                 OnEnemyKilled();
@@ -108,26 +120,22 @@ public class BattleSystem : MonoBehaviour
             {
                 Debug.Log("Custom attack");
                 AttackDmg += customAttackData.Attack;
-                Debug.Log(AttackDmg);
 
                 float Slot1ReflectDamage = Item1 ? Item1.ReflectedDamagePercent : 0f;
                 float Slot2ReflectDamage = Item2 ? Item2.ReflectedDamagePercent : 0f;
                 float ReflectedDamagePercent = Slot1ReflectDamage + Slot2ReflectDamage;
-                Debug.Log(ReflectedDamagePercent);
 
                 if (ReflectedDamagePercent > 0f)
                 {
                     int DamageReflected = (int)(AttackDmg * (ReflectedDamagePercent / 100f));
-                    Debug.Log(DamageReflected);
-                    Debug.Log(EnemyStats.TempDefense);
-                    IsEnemyDead = EnemyStats.DoDamage(DamageReflected);
+                    IsEnemyDead |= EnemyStats.DoDamage(DamageReflected);
                 }
 
                 EnemyStats.TempDefense = customAttackData.Defense;
                 EnemyStats.TempSpeedSelf = customAttackData.Speed;
-                if (customAttackData.Healing > 0)
+                if (customAttackData.Healing != 0)
                 {
-                    EnemyStats.Heal(customAttackData.Healing);
+                    IsEnemyDead |= EnemyStats.Heal(customAttackData.Healing);
                 }
                 if (customAttackData.Sprite != null)
                 {
@@ -143,7 +151,7 @@ public class BattleSystem : MonoBehaviour
                 if (ReflectedDamagePercent > 0f)
                 {
                     int DamageReflected = (int)((float)AttackDmg * (ReflectedDamagePercent / 100f));
-                    IsEnemyDead = EnemyStats.DoDamage(DamageReflected);
+                    IsEnemyDead |= EnemyStats.DoDamage(DamageReflected);
                 }
 
                 EnemyStats.TempDefense = 0;
@@ -165,8 +173,7 @@ public class BattleSystem : MonoBehaviour
                     Debug.Log("Enemy killed!");
                     Score.IncreaseScore(EnemyStats.Score);
                 }
-                Announcements.Announce("Player is dead. Game Over.");
-                Debug.Log("Player is dead!");
+                StartCoroutine(OnPlayerDeath());
             }
             else if (IsEnemyDead)
             {
@@ -175,17 +182,37 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnNextEnemy()
+    IEnumerator SpawnNextEnemy (bool firstEnemy)
     {
         SuspendProcess = true;
-        yield return new WaitForSeconds(1.5f);
+        if (firstEnemy)
+        {
+            yield return new WaitForSeconds(2.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
 
-        Destroy(Enemy);
+        if (Enemy)
+        {
+            Destroy(Enemy);
+        }
 
         Enemy = Spawner.SpawnEnemy();
         EnemyStats = Enemy.GetComponent<CombatHandler>();
         Announcements.Announce(EnemyStats.Name + " " + EnemyStats.Intro);
 
         SuspendProcess = false;
+    }
+
+    IEnumerator OnPlayerDeath()
+    {
+        Debug.Log("Player is dead!");
+        Announcements.Announce("Player is dead! Game Over.");
+        SuspendProcess = true;
+        Score.DisplayFinalScore();
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene(0);
     }
 }

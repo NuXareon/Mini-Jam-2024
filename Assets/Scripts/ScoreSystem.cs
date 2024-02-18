@@ -6,6 +6,7 @@ using UnityEngine;
 public class ScoreSystem : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI FinalScoreText;
     public BackgroundManager Background;
     public int ScoreBackgroundChange = 1;
 
@@ -24,5 +25,12 @@ public class ScoreSystem : MonoBehaviour
             Background.SetNextBackground();
         }
         score += increase;
+    }
+
+    public void DisplayFinalScore()
+    {
+        FinalScoreText.text = "Score: " + score.ToString();
+        FinalScoreText.gameObject.SetActive(true);
+        ScoreText.gameObject.SetActive(false);
     }
 }

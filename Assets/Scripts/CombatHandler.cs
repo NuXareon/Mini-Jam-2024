@@ -74,7 +74,7 @@ public class CombatHandler : MonoBehaviour
         return CurrentHealth <= 0;
     }
 
-    public void Heal(int health)
+    public bool Heal(int health)
     {
         CurrentHealth += health;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
@@ -82,6 +82,7 @@ public class CombatHandler : MonoBehaviour
         HealthBar.SetSize(HealthRatio);
         HealthBar.SetText(CurrentHealth + "/" + MaxHealth);
         Debug.Log("Healed for " + health + " health, health remaining: " + CurrentHealth);
+        return CurrentHealth <= 0;
     }
 
     public void UpdateUI()
