@@ -13,7 +13,6 @@ public class BattleSystem : MonoBehaviour
 
     private GameObject Enemy;
     private CombatHandler EnemyStats;
-    private AudioSource EnemyAudio;
 
     public SlotHandler Slot1;
     public SlotHandler Slot2;
@@ -27,12 +26,14 @@ public class BattleSystem : MonoBehaviour
     public GameObject HealthPopupPrefab;
 
     public AudioClip DefaultAttackAudio;
-
+    public AudioClip DefaultHealAudio;
+    
     private bool SuspendProcess = false;
 
     void Start()
     {
         PlayerStats = Player.GetComponent<CombatHandler>();
+        List<AudioSource> AudioSources = new List<AudioSource>();
 
         StartCoroutine(SpawnNextEnemy(true));
     }
@@ -95,6 +96,7 @@ public class BattleSystem : MonoBehaviour
             int Slot2Attack = Item2 ? Item2.Attack : 0;
             int AttackDmg = PlayerStats.Attack + Slot1Attack + Slot2Attack + ExtraAttackOnLowHealth;
             AttackDmg = Mathf.Max(AttackDmg, 0);
+
             bool IsEnemyDead = EnemyStats.DoDamage(AttackDmg);
             if (IsPlayerDead)
             {
@@ -170,8 +172,6 @@ public class BattleSystem : MonoBehaviour
 
             EnemyStats.TempSpeedEnemy = 1f;
 
-            EnemyAudio.PlayOneShot(DefaultAttackAudio);
-
             AttackDmg = AttackDmg - Slot1Defense - Slot2Defense;
             AttackDmg = Mathf.Max(AttackDmg, 0);
 
@@ -192,7 +192,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnNextEnemy (bool firstEnemy)
+    IEnumerator SpawnNextEnemy(bool firstEnemy)
     {
         SuspendProcess = true;
         if (firstEnemy)
@@ -210,7 +210,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         Enemy = Spawner.SpawnEnemy();
-        EnemyAudio = Enemy.GetComponent<AudioSource>();
+        List<AudioSource> AudioSources = new List<AudioSource>();
         EnemyStats = Enemy.GetComponent<CombatHandler>();
         Announcements.Announce(EnemyStats.Name + " " + EnemyStats.Intro);
         EnemyName.text = EnemyStats.Name;
