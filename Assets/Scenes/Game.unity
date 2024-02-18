@@ -161,7 +161,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -608, y: -292}
-  m_SizeDelta: {x: 125, y: 125}
+  m_SizeDelta: {x: 127.75, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &29042082
 CanvasGroup:
@@ -209,9 +209,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 41b3406a110c3df489a8bd2270f26a67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 97dc67b0e48a11c4f932c52e299583d1, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: 0
   Defense: 0
-  Speed: 2.5
-  Healing: -5
+  Speed: 1
+  Healing: 0
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
   ReflectedDamagePercent: 0
@@ -1475,7 +1475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 816, y: -389}
+  m_AnchoredPosition: {x: 816, y: -384}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &402735523
@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xB7 40% DMG Reflect\n\xB7idk"
+  m_text: "\xB7 40% DMG Reflect\n\xB7 x0.8 SPD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
   m_sharedMaterial: {fileID: 8606831600230575953, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: 0
   Defense: 0
-  Speed: 0.7
+  Speed: 0.5
   Healing: 5
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
@@ -2783,7 +2783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xB7 5 HP Heal\n\xB7 \xF7 2 SPD"
+  m_text: "\xB7 5 HP Heal\n\xB7 x0.5 SPD"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
   m_sharedMaterial: {fileID: 8606831600230575953, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
@@ -3513,7 +3513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Attack: 0
   Defense: 1
-  Speed: 1
+  Speed: 0.8
   Healing: 0
   EnemySlowPercent: 0
   ExtraAttackOnLowHealth: 0
@@ -3969,7 +3969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -681, y: -246}
+  m_AnchoredPosition: {x: -691.2, y: -246}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &888431400
@@ -3992,7 +3992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HELMET
+  m_text: SUNGLASSES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
   m_sharedMaterial: {fileID: 8606831600230575953, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
@@ -4055,7 +4055,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 72.84723, y: 0, z: 0, w: 0}
+  m_margin: {x: 72.84723, y: 0, z: -20.36325, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5358,7 +5358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Attack: -5
-  Defense: 10
+  Defense: 5
   Speed: 1
   Healing: 0
   EnemySlowPercent: 0
@@ -5653,7 +5653,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 150, y: -54}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 202.2, y: 194.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1247983386
 MonoBehaviour:
@@ -5791,7 +5791,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -152, y: -51}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 207.4, y: 198.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281870838
 MonoBehaviour:
@@ -7510,7 +7510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xB7 10 DEF\n\xB7 -5 ATK"
+  m_text: "\xB7 5 DEF\n\xB7 -5 ATK"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
   m_sharedMaterial: {fileID: 8606831600230575953, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
@@ -7639,7 +7639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f18d00a24cdedc4489b774b48e0be3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Attack: 1
+  Attack: 2
   Defense: 0
   Speed: 1
   Healing: 0
@@ -7872,7 +7872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -606.1, y: -389}
+  m_AnchoredPosition: {x: -620.2, y: -389}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1686297637
@@ -7895,7 +7895,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xB7 IDK"
+  m_text: "\xB7 Looks cool"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
   m_sharedMaterial: {fileID: 8606831600230575953, guid: afe9728e47cb4a8489b3ff05c5b6bacd, type: 2}
@@ -8591,9 +8591,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnLoc: {x: 5, y: 1.4, z: 0}
   Enemies:
+  - {fileID: 6463383767239041930, guid: 1a453c108f918f64d85e56758bd2a714, type: 3}
   - {fileID: 6463383767239041930, guid: 2e2e7f1b61e4ee14cbaca6d5ed4997b2, type: 3}
   - {fileID: 6463383767239041930, guid: 5af0dc7e6aea1f442bf7ed4b72d9a855, type: 3}
-  - {fileID: 6463383767239041930, guid: 1a453c108f918f64d85e56758bd2a714, type: 3}
   - {fileID: 6463383767239041930, guid: 4bb0e737e7856cd4aa41eab745865534, type: 3}
   - {fileID: 6463383767239041930, guid: e554fb5038fce6140806fde28c0da829, type: 3}
   - {fileID: 6463383767239041930, guid: 04194e52e90e4034a80b93b8b3993883, type: 3}

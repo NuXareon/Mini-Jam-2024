@@ -101,11 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173047defd2a57f4cbe9a031782c7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 80
   Attack: 5
   Defense: 0
   Speed: 0.8
-  Score: 1
+  Score: 40
   HealthBar: {fileID: 0}
   GaucheBar: {fileID: 0}
   Audio1: {fileID: -7796265480692960816}
@@ -134,15 +134,15 @@ MonoBehaviour:
     Healing: 0
     AttackText: is preparing for a big attack
     Sprite: {fileID: 0}
-  - Attack: 20
+  - Attack: 15
     Defense: 0
-    Speed: 1
+    Speed: 1.2
     Healing: 0
     AttackText: used all his power to attack
     Sprite: {fileID: 0}
   - Attack: -10
     Defense: 0
-    Speed: 1.5
+    Speed: 2.5
     Healing: 10
     AttackText: is recovering
     Sprite: {fileID: 0}

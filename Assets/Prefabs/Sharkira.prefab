@@ -224,7 +224,7 @@ MonoBehaviour:
     Healing: 0
     AttackText: kisses you
     Sprite: {fileID: 0}
-  - Attack: 15
+  - Attack: 10
     Defense: 0
     Speed: 1
     Healing: 0

@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 40
-  Attack: 3
+  Attack: 4
   Defense: 0
   Speed: 3
   Score: 10
