@@ -85,6 +85,7 @@ public class CombatHandler : MonoBehaviour
         float HealthRatio = (float)CurrentHealth / (float)MaxHealth;
         HealthBar.SetSize(HealthRatio);
         HealthBar.SetText(CurrentHealth + "/" + MaxHealth);
+        HealthPopup.Create(BattleSystem.HealthPopupPrefab.transform, transform.position, health);
         Debug.Log("Healed for " + health + " health, health remaining: " + CurrentHealth);
         return CurrentHealth <= 0;
     }
