@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,8 @@ public class BattleSystem : MonoBehaviour
     public AnnouncementsHandler Announcements;
     public SpawnerSystem Spawner;
     public ScoreSystem Score;
+
+    public TextMeshProUGUI EnemyName;
 
     private bool SuspendProcess = false;
 
@@ -202,6 +205,7 @@ public class BattleSystem : MonoBehaviour
         Enemy = Spawner.SpawnEnemy();
         EnemyStats = Enemy.GetComponent<CombatHandler>();
         Announcements.Announce(EnemyStats.Name + " " + EnemyStats.Intro);
+        EnemyName.text = EnemyStats.Name;
 
         SuspendProcess = false;
     }
