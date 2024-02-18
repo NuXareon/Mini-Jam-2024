@@ -8591,9 +8591,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnLoc: {x: 5, y: 1.4, z: 0}
   Enemies:
-  - {fileID: 6463383767239041930, guid: 1a453c108f918f64d85e56758bd2a714, type: 3}
   - {fileID: 6463383767239041930, guid: 2e2e7f1b61e4ee14cbaca6d5ed4997b2, type: 3}
   - {fileID: 6463383767239041930, guid: 5af0dc7e6aea1f442bf7ed4b72d9a855, type: 3}
+  - {fileID: 6463383767239041930, guid: 1a453c108f918f64d85e56758bd2a714, type: 3}
   - {fileID: 6463383767239041930, guid: 4bb0e737e7856cd4aa41eab745865534, type: 3}
   - {fileID: 6463383767239041930, guid: e554fb5038fce6140806fde28c0da829, type: 3}
   - {fileID: 6463383767239041930, guid: 04194e52e90e4034a80b93b8b3993883, type: 3}
