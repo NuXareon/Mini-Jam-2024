@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 125
-  Attack: 3
+  Attack: 1
   Defense: 0
-  Speed: 3
+  Speed: 2
   Score: 75
   HealthBar: {fileID: 0}
   GaucheBar: {fileID: 0}
@@ -219,9 +219,9 @@ MonoBehaviour:
     Healing: 0
     AttackText: kisses you
     Sprite: {fileID: 0}
-  - Attack: 0
+  - Attack: 15
     Defense: 0
     Speed: 1
-    Healing: 10
+    Healing: 0
     AttackText: crushes you with all her love
     Sprite: {fileID: 0}
