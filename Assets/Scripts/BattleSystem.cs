@@ -59,8 +59,8 @@ public class BattleSystem : MonoBehaviour
 
         if (ExecutePlayerTurn)
         {
-            Debug.Log("Player Attacking!");
-            Announcements.Announce("Player is attacking");
+            Debug.Log("Hero Attacking!");
+            Announcements.Announce("Hero is attacking");
 
             bool IsPlayerDead = false;
 
@@ -214,8 +214,8 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator OnPlayerDeath()
     {
-        Debug.Log("Player is dead!");
-        Announcements.Announce("Player is dead! Game Over.");
+        Debug.Log("Hero is dead!");
+        Announcements.Announce("Hero is dead! Game Over.");
         SuspendProcess = true;
         Score.DisplayFinalScore();
         yield return new WaitForSeconds(2.5f);
