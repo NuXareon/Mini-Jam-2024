@@ -74,6 +74,10 @@ public class CombatHandler : MonoBehaviour
         HealthBar.SetSize(HealthRatio);
         HealthBar.SetText(CurrentHealth+"/"+MaxHealth);
         HealthPopup.Create(BattleSystem.HealthPopupPrefab.transform, transform.position, -damageMitigated);
+        if (damageMitigated > 0)
+        {
+            StartCoroutine(OnHitAnimation());
+        }
         Debug.Log("Attack did " + damageMitigated + " damage, health remaining: " + CurrentHealth);
         return CurrentHealth <= 0;
     }
@@ -86,6 +90,10 @@ public class CombatHandler : MonoBehaviour
         HealthBar.SetSize(HealthRatio);
         HealthBar.SetText(CurrentHealth + "/" + MaxHealth);
         HealthPopup.Create(BattleSystem.HealthPopupPrefab.transform, transform.position, health);
+        if (health > 0)
+        {
+            StartCoroutine(OnHealAnimation());
+        }
         Debug.Log("Healed for " + health + " health, health remaining: " + CurrentHealth);
         return CurrentHealth <= 0;
     }
@@ -96,5 +104,21 @@ public class CombatHandler : MonoBehaviour
         HealthBar.SetSize(HealthRatio);
         HealthBar.SetText(CurrentHealth + "/" + MaxHealth);
         GaucheBar.SetSize(AttackGauche / MaxAttackGauche);
+    }
+
+    IEnumerator OnHitAnimation()
+    {
+        transform.position += new Vector3(0.25f, 0f);
+        yield return new WaitForSeconds(0.2f);
+        transform.position += new Vector3(-0.5f, 0f);
+        yield return new WaitForSeconds(0.2f);
+        transform.position += new Vector3(0.25f, 0f);
+    }
+
+    IEnumerator OnHealAnimation()
+    {
+        transform.position += new Vector3(0f, 0.25f);
+        yield return new WaitForSeconds(0.5f);
+        transform.position += new Vector3(0f, -0.25f);
     }
 }
