@@ -7,6 +7,7 @@ public class ScoreSystem : MonoBehaviour
 {
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI FinalScoreText;
+    public GameObject FinalScore;
     public BackgroundManager Background;
     public int ScoreBackgroundChange = 1;
 
@@ -30,7 +31,7 @@ public class ScoreSystem : MonoBehaviour
     public void DisplayFinalScore()
     {
         FinalScoreText.text = "Score: " + score.ToString();
-        FinalScoreText.gameObject.SetActive(true);
+        FinalScore.SetActive(true);
         ScoreText.gameObject.SetActive(false);
     }
 }
