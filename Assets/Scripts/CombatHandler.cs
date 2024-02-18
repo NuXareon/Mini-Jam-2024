@@ -19,6 +19,9 @@ public class CombatHandler : MonoBehaviour
     public HealthBarHandler HealthBar = null;
     public HealthBarHandler GaucheBar = null;
 
+    public AudioSource Audio1;
+    public AudioSource Audio2;
+
     public string Name;
     public string Intro;
 
@@ -76,6 +79,7 @@ public class CombatHandler : MonoBehaviour
         HealthPopup.Create(BattleSystem.HealthPopupPrefab.transform, transform.position, -damageMitigated);
         if (damageMitigated > 0)
         {
+            Audio1.PlayOneShot(BattleSystem.DefaultAttackAudio);
             StartCoroutine(OnHitAnimation());
         }
         Debug.Log("Attack did " + damageMitigated + " damage, health remaining: " + CurrentHealth);
@@ -92,6 +96,7 @@ public class CombatHandler : MonoBehaviour
         HealthPopup.Create(BattleSystem.HealthPopupPrefab.transform, transform.position, health);
         if (health > 0)
         {
+            Audio2.PlayOneShot(BattleSystem.DefaultHealAudio);
             StartCoroutine(OnHealAnimation());
         }
         Debug.Log("Healed for " + health + " health, health remaining: " + CurrentHealth);
