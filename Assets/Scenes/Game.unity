@@ -5611,6 +5611,7 @@ MonoBehaviour:
   Spawner: {fileID: 1768014842}
   Score: {fileID: 1768014843}
   EnemyName: {fileID: 477132296}
+  HealthPopupPrefab: {fileID: 8326801571359404259, guid: 6bd1c8c0c3eda7f48876b205d14c6b95, type: 3}
 --- !u!4 &1768014841
 Transform:
   m_ObjectHideFlags: 0

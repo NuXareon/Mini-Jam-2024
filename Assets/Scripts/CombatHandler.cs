@@ -33,6 +33,8 @@ public class CombatHandler : MonoBehaviour
     public float TempSpeedSelf = 1f;
     public float TempSpeedEnemy = 1f;
 
+    private BattleSystem BattleSystem = null;
+
     void Awake()
     {
         CurrentHealth = MaxHealth;
@@ -40,6 +42,7 @@ public class CombatHandler : MonoBehaviour
 
     private void Start()
     {
+        BattleSystem = FindAnyObjectByType<BattleSystem>();
         UpdateUI();
     }
 
@@ -70,6 +73,7 @@ public class CombatHandler : MonoBehaviour
         float HealthRatio = (float)CurrentHealth / (float)MaxHealth;
         HealthBar.SetSize(HealthRatio);
         HealthBar.SetText(CurrentHealth+"/"+MaxHealth);
+        HealthPopup.Create(BattleSystem.HealthPopupPrefab.transform, transform.position, -damageMitigated);
         Debug.Log("Attack did " + damageMitigated + " damage, health remaining: " + CurrentHealth);
         return CurrentHealth <= 0;
     }

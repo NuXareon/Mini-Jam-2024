@@ -23,6 +23,8 @@ public class BattleSystem : MonoBehaviour
 
     public TextMeshProUGUI EnemyName;
 
+    public GameObject HealthPopupPrefab;
+
     private bool SuspendProcess = false;
 
     void Start()
