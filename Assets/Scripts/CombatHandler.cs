@@ -30,7 +30,7 @@ public class CombatHandler : MonoBehaviour
 
     private float MaxAttackGauche = 5f;
 
-    private float LowHealthRatio = 0.3f;
+    private float LowHealthRatio = 0.5f;
 
     public int TempDefense = 0;
     public float TempSpeedSelf = 1f;
